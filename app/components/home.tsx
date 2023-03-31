@@ -244,6 +244,8 @@ export function Chat(props: {
     if (userInput.length <= 0) return;
     setIsLoading(true);
     chatStore.onUserInput(userInput).then(() => setIsLoading(false));
+    console.log("Time: ",Date());
+    console.log("Question: ",userInput);
     setUserInput("");
     setPromptHints([]);
     inputRef.current?.focus();
