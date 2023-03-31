@@ -57,11 +57,12 @@ export function requestOpenaiClient(path: string) {
 
 export async function requestChat(messages: Message[]) {
   const req: ChatRequest = makeRequestParam(messages, { filterBot: true });
-
+  console.log("[Question] ",messages)
   const res = await requestOpenaiClient("v1/chat/completions")(req);
-
+  
   try {
     const response = (await res.json()) as ChatReponse;
+    console.log("[Response] ",response)
     return response;
   } catch (error) {
     console.error("[Request Chat] ", error, res.body);
